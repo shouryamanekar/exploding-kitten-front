@@ -9,10 +9,11 @@ const LoginPage = ({onLoginCancel}) => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+  const baseURL = process.env.REACT_APP_BACKEND_URL;
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:8080/login', {
+      const response = await fetch(`${baseURL}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

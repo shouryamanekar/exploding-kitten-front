@@ -32,7 +32,7 @@ const GamePage = () => {
 
     const fetchUserPoints = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/user/points', {
+      const response = await fetch(`${baseURL}/api/user/points`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const GamePage = () => {
 
     const fetchLeaderboard = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/leaderboard', {
+      const response = await fetch(`${baseURL}/api/leaderboard`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -160,7 +160,7 @@ const GamePage = () => {
           if (drawnCards.length === 4) {
             // Player wins after drawing 5 cards
             // Increment user points in the database
-            fetch(`http://localhost:8080/api/user/incrementPoints`, {
+            fetch(`${baseURL}/api/user/incrementPoints`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
