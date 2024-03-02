@@ -1,0 +1,202 @@
+/* GamePage.css */
+
+
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+  }
+
+  .button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Top Bar */
+
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: blue;
+    width: 100%;
+    margin-bottom: 30px;
+    border: 0.05px solid black;
+    border-radius: 0.75rem;
+  }
+  
+  .restart-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .restart-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+  }
+  
+  .player-info {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+    /* Menu Box */
+
+    .menu-box {
+      margin: 10px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    
+    .menu-box.open {
+      background-color: #4caf50;
+      transform: scale(1.05);
+      border-radius: 4px;
+    }
+    
+    .menu-items {
+      display: none;
+      position: absolute;
+      top: auto;
+      right: 0;
+      background-color: green;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .menu-items.show {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .menu-items button {
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      border: none;
+      background-color: inherit;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .menu-items button:hover {
+      background-color: #ddd;
+    }
+    
+  
+  /* Centre Box */
+
+  .center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cards-display {
+    width: 100%;
+    text-align: center;
+    color: red;
+    background-color: yellow;
+    border-radius: 0.75rem;
+    border: 0.05px solid black;
+    margin-bottom: 30px;
+  }
+
+  
+  .drawn-cards-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    
+  }
+
+  .draw-card {
+    color: red;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .draw-card:hover {
+    transform: scale(1.05); /* Adjust the scale for a slight zoom effect on hover */
+  }
+  
+  .drawn-card,
+  .diffuse-card,
+  .cat-card {
+    background-color: #e0e0e0;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 0.75rem;
+  }
+  
+  /* Bottom Box */
+  
+  .bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .diffuse-box{
+    width: 100%;
+    text-align: center;
+    background-color: green;
+    color: white;
+    border: 0.5px solid black;
+    border-right-width: 0px;
+    border-radius: 0.75rem;
+    border-top-right-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+  }
+  .out-box {
+    width: 100%;
+    text-align: center;
+    background-color: red;
+    color: white;
+    border: 0.5px solid black;
+    border-radius: 0.75rem;
+    border-top-left-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+  }
+  
+  .diffuse-cards-container,
+  .cat-cards-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  
+  .card-image {
+    width: 120px; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+  }
+  
