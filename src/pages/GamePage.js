@@ -13,6 +13,7 @@ const GamePage = () => {
     const [drawnCards, setDrawnCards] = useState([]);
     const [leaderboard, setLeaderboard] = useState([]);
     const navigate = useNavigate();
+    const baseURL = process.env.REACT_APP_BACKEND_URL;
 
     // Ensure the user is redirected to the login page if not logged in
     useEffect(() => {
