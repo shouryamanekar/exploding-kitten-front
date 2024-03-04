@@ -1,5 +1,5 @@
 // pages/GamePage.js
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect, useCallback   } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LeaderboardDialog from '../components/LeaderboardDialog';
 import '../styles/GamePage.css';
@@ -15,6 +15,52 @@ const GamePage = () => {
     const navigate = useNavigate();
     const baseURL = process.env.REACT_APP_BACKEND_URL;
 
+
+
+    const fetchUserPoints = useCallback(async () => {
+    try {
+      const response = await fetch(`${baseURL}/api/user/points`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Username': localStorage.getItem('username'),
+          'ngrok-skip-browser-warning': 'true',
+        },
+      });
+
+      if (response.ok) {
+        const { points } = await response.json();
+        setPlayerPoints(points);
+      } else {
+        console.error('Failed to fetch user points:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error during user points fetch:', error);
+    }
+    },[baseURL]);
+
+    const fetchLeaderboard = useCallback(async () => {
+    try {
+      const response = await fetch(`${baseURL}/api/leaderboard`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Username': localStorage.getItem('username'),
+          'ngrok-skip-browser-warning': 'true',
+        },
+      });
+
+      if (response.ok ) {
+        const data = await response.json();
+        setLeaderboard(data);
+      } else {
+        console.error('Failed to fetch leaderboard:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error during fetchLeaderboard:', error);
+    }
+    },[baseURL]);
+
     // Ensure the user is redirected to the login page if not logged in
     useEffect(() => {
 
@@ -29,49 +75,8 @@ const GamePage = () => {
 
       fetchUserPoints();
       fetchLeaderboard();
-    }, [navigate]);
+    }, [navigate, fetchUserPoints, fetchLeaderboard]);
 
-    const fetchUserPoints = async () => {
-    try {
-      const response = await fetch(`${baseURL}/api/user/points`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Username': localStorage.getItem('username'),
-        },
-      });
-
-      if (response.ok) {
-        const { points } = await response.json();
-        setPlayerPoints(points);
-      } else {
-        console.error('Failed to fetch user points:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error during user points fetch:', error);
-    }
-    };
-
-    const fetchLeaderboard = async () => {
-    try {
-      const response = await fetch(`${baseURL}/api/leaderboard`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Username': localStorage.getItem('username'),
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setLeaderboard(data);
-      } else {
-        console.error('Failed to fetch leaderboard:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error during fetchLeaderboard:', error);
-    }
-    };
 
 
     function generateInitialDeck() {
