@@ -24,7 +24,6 @@ const GamePage = () => {
         headers: {
           'Content-Type': 'application/json',
           'Username': localStorage.getItem('username'),
-          'ngrok-skip-browser-warning': 'true',
         },
       });
 
@@ -46,7 +45,6 @@ const GamePage = () => {
         headers: {
           'Content-Type': 'application/json',
           'Username': localStorage.getItem('username'),
-          'ngrok-skip-browser-warning': 'true',
         },
       });
 
@@ -182,6 +180,7 @@ const GamePage = () => {
             });
 
             alert('You Win!');
+            fetchLeaderboard();
             handleRestartGame();
             return;
           }
